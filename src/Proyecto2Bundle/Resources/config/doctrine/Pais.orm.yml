@@ -1,0 +1,20 @@
+Proyecto2Bundle\Entity\Pais:
+    type: entity
+    table: pais
+    id:
+        idpais:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        nombre:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+    lifecycleCallbacks: {  }

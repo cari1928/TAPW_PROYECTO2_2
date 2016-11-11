@@ -1,0 +1,31 @@
+Proyecto2Bundle\Entity\Hotel:
+    type: entity
+    table: hotel
+    id:
+        idhotel:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        capacidad:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        nombre:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+        direccion:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+    lifecycleCallbacks: {  }

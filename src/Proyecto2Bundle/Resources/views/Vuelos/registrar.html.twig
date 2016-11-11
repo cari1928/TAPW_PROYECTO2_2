@@ -1,0 +1,34 @@
+{% extends '::base.html.twig' %}
+
+{% block title %} Datos del cliente {% endblock %}
+
+{% block body %}
+<div class="panel panel-default" style="margin:20px">
+  <div class="panel-heading">
+    <h2 class="panel-title"> Vuelos Disponibles </h2>
+  </div>
+  <div class="panel-body">
+    {{ form_start(formulario) }}
+      <div class="form-group">
+        {{ form_row(formulario.nombres, {'attr':{'class':'form-control'}}) }}
+      </div>
+      <div class="form-group">
+        {{ form_row(formulario.apellidos, {'attr':{'class':'form-control'}}) }}
+      </div>
+      <div class="form-group">
+        {{ form_row(formulario.direccion, {'attr':{'class':'form-control'}}) }}
+      </div>
+      <div class="form-group">
+        {{ form_row(formulario.direccionFacturacion, {'attr':{'class':'form-control'}}) }}
+      </div>
+      <div class="form-group">
+        {{ form_row(formulario.modoPago, {'attr':{'class':'form-control'}}) }}
+      </div>
+      <div class="form-group">
+        {{ form_row(formulario.nacimiento, {'attr':{'class':'form-control'}}) }}
+      </div>
+      {{ form_widget(formulario.Guardar, {'attr':{'class':'btn btn-primary'}}) }}
+    {{ form_end(formulario) }}
+  </div>
+</div>
+{% endblock %}

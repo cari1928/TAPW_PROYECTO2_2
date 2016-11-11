@@ -1,0 +1,25 @@
+Proyecto2Bundle\Entity\Avion:
+    type: entity
+    table: avion
+    id:
+        idavion:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        marca:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+        capacidad:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+    lifecycleCallbacks: {  }

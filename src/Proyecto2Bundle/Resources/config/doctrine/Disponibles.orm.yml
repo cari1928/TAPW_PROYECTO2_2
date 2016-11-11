@@ -1,0 +1,56 @@
+Proyecto2Bundle\Entity\Disponibles:
+    type: entity
+    table: disponibles
+    indexes:
+        IDX_1940E0DE16F9B4BE:
+            columns:
+                - idorigen
+        IDX_1940E0DE5EF21C94:
+            columns:
+                - iddestino
+        IDX_1940E0DE6EBC1872:
+            columns:
+                - idtarifa
+    id:
+        iddisponibles:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+    fields:
+        fechahora:
+            type: datetime
+            nullable: true
+    oneToOne:
+        idorigen:
+            targetEntity: Aeropuerto
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idorigen:
+                    referencedColumnName: idaeropuerto
+            orphanRemoval: false
+        iddestino:
+            targetEntity: Aeropuerto
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                iddestino:
+                    referencedColumnName: idaeropuerto
+            orphanRemoval: false
+        idtarifa:
+            targetEntity: Tarifa
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idtarifa:
+                    referencedColumnName: idtarifa
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

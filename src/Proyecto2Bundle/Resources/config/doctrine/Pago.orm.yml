@@ -1,0 +1,57 @@
+Proyecto2Bundle\Entity\Pago:
+    type: entity
+    table: pago
+    indexes:
+        IDX_F4DF5F3EC7897C55:
+            columns:
+                - idreserva
+        IDX_F4DF5F3E2B18C94B:
+            columns:
+                - idcliente
+    id:
+        idpago:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        monto:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+        cupon:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+        total:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+    manyToOne:
+        idreserva:
+            targetEntity: Reserva
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idreserva:
+                    referencedColumnName: idreserva
+            orphanRemoval: false
+        idcliente:
+            targetEntity: Cliente
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idcliente:
+                    referencedColumnName: idcliente
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

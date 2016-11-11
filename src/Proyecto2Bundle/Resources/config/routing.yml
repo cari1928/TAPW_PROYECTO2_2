@@ -1,0 +1,19 @@
+proyecto2_homepage:
+    path:     /
+    defaults: { _controller: Proyecto2Bundle:Vuelos:index }
+    
+proyecto2_datos_vuelo:
+    path:     /datos_vuelo
+    defaults: { _controller: Proyecto2Bundle:Vuelos:datos_vuelo }   
+    
+proyecto2_lista_vuelos:
+    path:     /lista_vuelos
+    defaults: { _controller: Proyecto2Bundle:Vuelos:lista_vuelos }    
+    
+proyecto2_lista_vuelos_data:
+    path:     /lista_vuelos_data
+    defaults: { _controller: Proyecto2Bundle:Vuelos:lista_vuelos_data } 
+    
+proyecto2_registrar:
+    path:     /registrar
+    defaults: { _controller: Proyecto2Bundle:Vuelos:registrar }       

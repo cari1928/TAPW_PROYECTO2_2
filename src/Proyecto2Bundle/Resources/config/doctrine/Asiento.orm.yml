@@ -1,0 +1,25 @@
+Proyecto2Bundle\Entity\Asiento:
+    type: entity
+    table: asiento
+    id:
+        idasiento:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        letra:
+            type: string
+            nullable: true
+            length: 1
+            options:
+                fixed: false
+        fila:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+    lifecycleCallbacks: {  }

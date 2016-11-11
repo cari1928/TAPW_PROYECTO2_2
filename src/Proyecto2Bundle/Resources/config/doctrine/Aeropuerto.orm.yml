@@ -1,0 +1,35 @@
+Proyecto2Bundle\Entity\Aeropuerto:
+    type: entity
+    table: aeropuerto
+    indexes:
+        IDX_AF137078AD92DF5F:
+            columns:
+                - idpais
+    id:
+        idaeropuerto:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        nombre:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+    manyToOne:
+        idpais:
+            targetEntity: Pais
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idpais:
+                    referencedColumnName: idpais
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

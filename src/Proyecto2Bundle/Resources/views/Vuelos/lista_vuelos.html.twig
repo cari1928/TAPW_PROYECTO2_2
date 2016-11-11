@@ -1,0 +1,50 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+<br>
+  <table id="example" class="display table table-bordered" width="100%" cellspacing="0">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Fecha / Hora</th>
+        <th>Origen</th>
+        <th>Destino</th>
+        <th>Tarifa</th>
+        <th>Opciones</th>
+      </tr>
+    </thead>
+    <tfoot>
+    </tfoot>
+  </table>
+{% endblock %}
+
+{% block javascripts %}
+  <script type="text/javascript">
+    $(document).ready(function() {
+      var table = $('#example').DataTable( {
+        "ajax": "{{ path('proyecto2_lista_vuelos_data') }}",
+        "columns": [
+            { "data": "iddisponibles" },   { "data": "fechahora" },
+            { "data": "idorigen" },        { "data": "iddestino" },
+            { "data": "idtarifa" },        
+            { "data": 'hola', "defaultContent": "<button id='send'>Reservar</button>" }
+        ]
+      } );
+    
+      $('#example tbody').on( 'click', 'button', function () {
+          var frm = table.row( $(this).parents('tr') ).data();
+          console.log(frm);
+					$.ajax({
+						type: "POST",
+						url: "../register.php",
+						data: frm
+					}).done(function (info) {
+						console.log(info);
+						document.location.href = "{{ path('proyecto2_registrar') }}";
+					});
+              
+      } );
+    });
+  
+    </script>
+{% endblock %}

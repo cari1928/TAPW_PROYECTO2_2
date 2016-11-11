@@ -1,0 +1,58 @@
+Proyecto2Bundle\Entity\Hospedaje:
+    type: entity
+    table: hospedaje
+    indexes:
+        IDX_D0926DF6C339883F:
+            columns:
+                - idsuite
+        IDX_D0926DF6D55632C0:
+            columns:
+                - idhotel
+        IDX_D0926DF6C7897C55:
+            columns:
+                - idreserva
+    id:
+        idhospedaje:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+        dias:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+    oneToOne:
+        idsuite:
+            targetEntity: Suite
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idsuite:
+                    referencedColumnName: idsuite
+            orphanRemoval: false
+        idhotel:
+            targetEntity: Hotel
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idhotel:
+                    referencedColumnName: idhotel
+            orphanRemoval: false
+        idreserva:
+            targetEntity: Reserva
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idreserva:
+                    referencedColumnName: idreserva
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

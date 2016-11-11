@@ -1,0 +1,30 @@
+Proyecto2Bundle\Entity\Suite:
+    type: entity
+    table: suite
+    id:
+        idsuite:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        clase:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+        precio:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+        numsuite:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+    lifecycleCallbacks: {  }

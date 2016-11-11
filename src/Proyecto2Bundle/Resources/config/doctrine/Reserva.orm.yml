@@ -1,0 +1,22 @@
+Proyecto2Bundle\Entity\Reserva:
+    type: entity
+    table: reserva
+    id:
+        idreserva:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        costo:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+        fecha:
+            type: date
+            nullable: true
+    lifecycleCallbacks: {  }
