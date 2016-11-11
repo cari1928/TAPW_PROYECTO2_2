@@ -1,6 +1,10 @@
 proyecto2_homepage:
-    path:     /
+    path:     /home
     defaults: { _controller: Proyecto2Bundle:Vuelos:index }
+    
+proyecto2_homepage_2:
+    path:     /
+    defaults: { _controller: Proyecto2Bundle:Vuelos:index }    
     
 proyecto2_datos_vuelo:
     path:     /datos_vuelo
@@ -10,10 +14,38 @@ proyecto2_lista_vuelos:
     path:     /lista_vuelos
     defaults: { _controller: Proyecto2Bundle:Vuelos:lista_vuelos }    
     
+proyecto2_ini_lista_vuelos:
+    path:     /ini_lista_vuelos
+    defaults: { _controller: Proyecto2Bundle:Vuelos:ini_lista_vuelos }        
+    
 proyecto2_lista_vuelos_data:
     path:     /lista_vuelos_data
-    defaults: { _controller: Proyecto2Bundle:Vuelos:lista_vuelos_data } 
+    defaults: { _controller: Proyecto2Bundle:Vuelos:lista_vuelos_data }
     
 proyecto2_registrar:
     path:     /registrar
     defaults: { _controller: Proyecto2Bundle:Vuelos:registrar }       
+
+proyecto2_reservar:
+    path:     /reservar
+    defaults: { _controller: Proyecto2Bundle:Vuelos:reservar }   
+    
+proyecto2_lista_hoteles:
+    path:     /lista_hoteles
+    defaults: { _controller: Proyecto2Bundle:Vuelos:lista_hoteles }    
+    
+proyecto2_lista_hoteles_data:
+    path:     /lista_hoteles_data
+    defaults: { _controller: Proyecto2Bundle:Vuelos:lista_hoteles_data }  
+    
+proyecto2_reservar_hotel:
+    path:     /reservar_hotel
+    defaults: { _controller: Proyecto2Bundle:Vuelos:reservar_hotel } 
+    
+proyecto2_lista_clientes:
+    path:     /lista_clientes
+    defaults: { _controller: Proyecto2Bundle:Vuelos:lista_clientes }    
+    
+proyecto2_lista_clientes_data:
+    path:     /lista_clientes_data
+    defaults: { _controller: Proyecto2Bundle:Vuelos:lista_clientes_data }     

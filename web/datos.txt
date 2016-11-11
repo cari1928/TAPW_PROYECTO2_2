@@ -1,1 +1,1 @@
-iddisponibles=>6;fechahora=>2014-08-13 00:00:00;idorigen=>Puerto 5;iddestino=>Puerto 1;idtarifa=>Negocios
+iddisponibles=>1

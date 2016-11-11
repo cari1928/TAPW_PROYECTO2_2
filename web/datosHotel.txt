@@ -1,0 +1,1 @@
+idhotel=>1;capacidad=>20000;nombre=>Hotel 1;direccion=>Direccion 1;

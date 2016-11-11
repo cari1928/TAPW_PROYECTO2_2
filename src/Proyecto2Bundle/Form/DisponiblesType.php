@@ -17,15 +17,17 @@ class DisponiblesType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-        // ->add('fechahora', DateTimeType::class, array('required'=>'required'))
-        ->add('idorigen', EntityType::class, array('class'=>'Proyecto2Bundle:Aeropuerto',
-                                                    'choice_label'=>'nombre'))
-        ->add('iddestino', EntityType::class, array('class'=>'Proyecto2Bundle:Aeropuerto',
-                                                    'choice_label'=>'nombre'))
-        ->add('idtarifa', EntityType::class, array('class'=>'Proyecto2Bundle:Tarifa',
-                                                    'choice_label'=>'clase'))
-        ->add('Buscar', SubmitType::class)
-        ;
+            // ->add('fechahora', DateTimeType::class, array('required'=>'required'))
+            ->add('idorigen', EntityType::class, array('class'=>'Proyecto2Bundle:Aeropuerto',
+                                                        'choice_label'=>'nombre'))
+            ->add('iddestino', EntityType::class, array('class'=>'Proyecto2Bundle:Aeropuerto',
+                                                        'choice_label'=>'nombre'))
+            ->add('idtarifa', EntityType::class, array('class'=>'Proyecto2Bundle:Tarifa',
+                                                        'choice_label'=>'clase'))
+            ->add('idavion', EntityType::class, array('class'=>'Proyecto2Bundle:Avion',
+                                                        'choice_label'=>'marca'))        
+            ->add('Buscar', SubmitType::class)
+            ;
     }
     
     /**

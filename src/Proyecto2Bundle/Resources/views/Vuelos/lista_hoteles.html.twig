@@ -6,11 +6,9 @@
     <thead>
       <tr>
         <th>ID</th>
-        <th>Fecha / Hora</th>
-        <th>Origen</th>
-        <th>Destino</th>
-        <th>Tarifa</th>
-        <th>Avión</th>
+        <th>Capacidad</th>
+        <th>Nombre</th>
+        <th>Direccion</th>
         <th>Opciones</th>
       </tr>
     </thead>
@@ -23,12 +21,11 @@
   <script type="text/javascript">
     $(document).ready(function() {
       var table = $('#example').DataTable( {
-        "ajax": "{{ path('proyecto2_lista_vuelos_data') }}",
+        "ajax": "{{ path('proyecto2_lista_hoteles_data') }}",
         "columns": [
-            { "data": "iddisponibles" },   { "data": "fechahora" },
-            { "data": "idorigen" },        { "data": "iddestino" },
-            { "data": "idtarifa" },        { "data": "idavion" },
-            { "data": 'hola', "defaultContent": "<button class='btn btn-primary' id='send'>Reservar</button>" }
+            { "data": "idhotel" },   { "data": "capacidad" },
+            { "data": "nombre" },    { "data": "direccion" },
+            { "data": 'btn', "defaultContent": "<button class='btn btn-primary' id='send'>Reservar</button>" }
         ]
       } );
     
@@ -41,9 +38,8 @@
 						data: frm
 					}).done(function (info) {
 						console.log(info);
-						document.location.href = "{{ path('proyecto2_registrar') }}";
+						document.location.href = "{{ path('proyecto2_reservar_hotel') }}";
 					});
-              
       } );
     });
   

@@ -11,6 +11,9 @@ Proyecto2Bundle\Entity\Disponibles:
         IDX_1940E0DE6EBC1872:
             columns:
                 - idtarifa
+        IDX_1940E0DEF548F121:
+            columns:
+                - idavion
     id:
         iddisponibles:
             type: integer
@@ -18,11 +21,13 @@ Proyecto2Bundle\Entity\Disponibles:
             options:
                 unsigned: false
             id: true
+            generator:
+                strategy: SEQUENCE
     fields:
         fechahora:
             type: datetime
             nullable: true
-    oneToOne:
+    manyToOne:
         idorigen:
             targetEntity: Aeropuerto
             cascade: {  }
@@ -52,5 +57,15 @@ Proyecto2Bundle\Entity\Disponibles:
             joinColumns:
                 idtarifa:
                     referencedColumnName: idtarifa
+            orphanRemoval: false
+        idavion:
+            targetEntity: Avion
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idavion:
+                    referencedColumnName: idavion
             orphanRemoval: false
     lifecycleCallbacks: {  }

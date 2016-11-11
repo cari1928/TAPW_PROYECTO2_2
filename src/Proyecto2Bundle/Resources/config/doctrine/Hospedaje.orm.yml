@@ -8,9 +8,9 @@ Proyecto2Bundle\Entity\Hospedaje:
         IDX_D0926DF6D55632C0:
             columns:
                 - idhotel
-        IDX_D0926DF6C7897C55:
+        IDX_D0926DF62B18C94B:
             columns:
-                - idreserva
+                - idcliente
     id:
         idhospedaje:
             type: integer
@@ -18,12 +18,17 @@ Proyecto2Bundle\Entity\Hospedaje:
             options:
                 unsigned: false
             id: true
+    fields:
         dias:
             type: integer
             nullable: false
             options:
                 unsigned: false
-            id: true
+        total:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
     oneToOne:
         idsuite:
             targetEntity: Suite
@@ -45,14 +50,14 @@ Proyecto2Bundle\Entity\Hospedaje:
                 idhotel:
                     referencedColumnName: idhotel
             orphanRemoval: false
-        idreserva:
-            targetEntity: Reserva
+        idcliente:
+            targetEntity: Cliente
             cascade: {  }
             fetch: LAZY
             mappedBy: null
             inversedBy: null
             joinColumns:
-                idreserva:
-                    referencedColumnName: idreserva
+                idcliente:
+                    referencedColumnName: idcliente
             orphanRemoval: false
     lifecycleCallbacks: {  }

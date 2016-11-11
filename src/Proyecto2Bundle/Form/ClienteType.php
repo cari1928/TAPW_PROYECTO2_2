@@ -9,6 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
 class ClienteType extends AbstractType
 {
@@ -29,7 +30,7 @@ class ClienteType extends AbstractType
                                                         ),
                                                     ))
             ->add('nacimiento', DateType::class) 
-            ->add('Guardar', SubmitType::class)
+            ->add('Guardar', SubmitType::class)       
             ;
     }
     
