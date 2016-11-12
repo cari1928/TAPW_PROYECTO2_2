@@ -1,0 +1,21 @@
+{% extends '::base.html.twig' %}
+
+{% block title %} Aplicar cupón {% endblock %}
+
+{% block body %}
+<div class="panel panel-default" style="margin:20px">
+  <div class="panel-heading">
+    <h2 class="panel-title"> Ingrese el porcentaje de descuento de su cupón </h2>
+  </div>
+  <div class="panel-body">
+    {{ form_start(formulario) }}
+      <div class="form-group">
+        {{ form_row(formulario.cupon, {'attr':{'class':'form-control', 'value':'0'}}) }}
+      </div>
+      {{ form_widget(formulario.Guardar, {'attr':{'class':'btn btn-primary'}}) }}
+    {{ form_end(formulario) }}
+  </div>
+</div>
+<script>
+</script>
+{% endblock %}

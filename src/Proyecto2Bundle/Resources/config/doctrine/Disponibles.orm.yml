@@ -27,6 +27,12 @@ Proyecto2Bundle\Entity\Disponibles:
         fechahora:
             type: datetime
             nullable: true
+        capacidadActual:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: capacidad_actual
     manyToOne:
         idorigen:
             targetEntity: Aeropuerto

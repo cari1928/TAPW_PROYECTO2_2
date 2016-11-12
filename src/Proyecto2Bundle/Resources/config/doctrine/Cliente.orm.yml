@@ -1,5 +1,6 @@
 Proyecto2Bundle\Entity\Cliente:
     type: entity
+    repositoryClass: Proyecto2Bundle\Repository\ClienteRepository
     table: cliente
     id:
         idcliente:

@@ -1,0 +1,35 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+<br>
+  <table id="example" class="display table table-bordered" width="100%" cellspacing="0">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Clientes</th>
+        <th>Vuelo</th>
+        <th>Cupón</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tfoot>
+    </tfoot>
+  </table>
+{% endblock %}
+
+{% block javascripts %}
+  <script type="text/javascript">
+    $(document).ready(function() {
+      var table = $('#example').DataTable( {
+        "ajax": "{{ path('proyecto2_lista_reservados_data') }}",
+        "columns": [
+            { "data": "idvuelo" },                { "data": "idcliente" },
+            { "data": "iddisponibles" },          { "data": "cupon" },
+            { "data": "total" }
+        ]
+      } );
+
+    });
+  
+    </script>
+{% endblock %}

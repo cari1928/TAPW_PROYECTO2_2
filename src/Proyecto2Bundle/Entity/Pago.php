@@ -28,11 +28,6 @@ class Pago
     private $total;
 
     /**
-     * @var \Proyecto2Bundle\Entity\Reserva
-     */
-    private $idreserva;
-
-    /**
      * @var \Proyecto2Bundle\Entity\Cliente
      */
     private $idcliente;
@@ -118,30 +113,6 @@ class Pago
     public function getTotal()
     {
         return $this->total;
-    }
-
-    /**
-     * Set idreserva
-     *
-     * @param \Proyecto2Bundle\Entity\Reserva $idreserva
-     *
-     * @return Pago
-     */
-    public function setIdreserva(\Proyecto2Bundle\Entity\Reserva $idreserva = null)
-    {
-        $this->idreserva = $idreserva;
-
-        return $this;
-    }
-
-    /**
-     * Get idreserva
-     *
-     * @return \Proyecto2Bundle\Entity\Reserva
-     */
-    public function getIdreserva()
-    {
-        return $this->idreserva;
     }
 
     /**

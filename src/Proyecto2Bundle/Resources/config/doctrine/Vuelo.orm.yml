@@ -1,5 +1,6 @@
 Proyecto2Bundle\Entity\Vuelo:
     type: entity
+    repositoryClass: Proyecto2Bundle\Repository\VueloRepository
     table: vuelo
     indexes:
         IDX_B608E375DF819071:
@@ -15,12 +16,9 @@ Proyecto2Bundle\Entity\Vuelo:
             options:
                 unsigned: false
             id: true
+            generator:
+                strategy: SEQUENCE
     fields:
-        monto:
-            type: float
-            nullable: true
-            precision: 10
-            scale: 0
         cupon:
             type: float
             nullable: true
@@ -31,7 +29,7 @@ Proyecto2Bundle\Entity\Vuelo:
             nullable: true
             precision: 10
             scale: 0
-    oneToOne:
+    manyToOne:
         iddisponibles:
             targetEntity: Disponibles
             cascade: {  }

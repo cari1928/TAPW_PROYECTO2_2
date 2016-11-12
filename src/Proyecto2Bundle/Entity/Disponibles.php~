@@ -18,6 +18,11 @@ class Disponibles
     private $fechahora;
 
     /**
+     * @var integer
+     */
+    private $capacidadActual;
+
+    /**
      * @var \Proyecto2Bundle\Entity\Aeropuerto
      */
     private $idorigen;
@@ -32,20 +37,11 @@ class Disponibles
      */
     private $idtarifa;
 
-
     /**
-     * Set iddisponibles
-     *
-     * @param integer $iddisponibles
-     *
-     * @return Disponibles
+     * @var \Proyecto2Bundle\Entity\Avion
      */
-    public function setIddisponibles($iddisponibles)
-    {
-        $this->iddisponibles = $iddisponibles;
+    private $idavion;
 
-        return $this;
-    }
 
     /**
      * Get iddisponibles
@@ -79,6 +75,30 @@ class Disponibles
     public function getFechahora()
     {
         return $this->fechahora;
+    }
+
+    /**
+     * Set capacidadActual
+     *
+     * @param integer $capacidadActual
+     *
+     * @return Disponibles
+     */
+    public function setCapacidadActual($capacidadActual)
+    {
+        $this->capacidadActual = $capacidadActual;
+
+        return $this;
+    }
+
+    /**
+     * Get capacidadActual
+     *
+     * @return integer
+     */
+    public function getCapacidadActual()
+    {
+        return $this->capacidadActual;
     }
 
     /**
@@ -152,11 +172,6 @@ class Disponibles
     {
         return $this->idtarifa;
     }
-    /**
-     * @var \Proyecto2Bundle\Entity\Avion
-     */
-    private $idavion;
-
 
     /**
      * Set idavion
@@ -182,3 +197,4 @@ class Disponibles
         return $this->idavion;
     }
 }
+

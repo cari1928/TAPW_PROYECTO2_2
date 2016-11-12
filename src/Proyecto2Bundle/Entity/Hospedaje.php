@@ -18,6 +18,11 @@ class Hospedaje
     private $dias;
 
     /**
+     * @var float
+     */
+    private $total;
+
+    /**
      * @var \Proyecto2Bundle\Entity\Suite
      */
     private $idsuite;
@@ -28,9 +33,9 @@ class Hospedaje
     private $idhotel;
 
     /**
-     * @var \Proyecto2Bundle\Entity\Reserva
+     * @var \Proyecto2Bundle\Entity\Cliente
      */
-    private $idreserva;
+    private $idcliente;
 
 
     /**
@@ -82,6 +87,30 @@ class Hospedaje
     }
 
     /**
+     * Set total
+     *
+     * @param float $total
+     *
+     * @return Hospedaje
+     */
+    public function setTotal($total)
+    {
+        $this->total = $total;
+
+        return $this;
+    }
+
+    /**
+     * Get total
+     *
+     * @return float
+     */
+    public function getTotal()
+    {
+        return $this->total;
+    }
+
+    /**
      * Set idsuite
      *
      * @param \Proyecto2Bundle\Entity\Suite $idsuite
@@ -128,64 +157,6 @@ class Hospedaje
     {
         return $this->idhotel;
     }
-
-    /**
-     * Set idreserva
-     *
-     * @param \Proyecto2Bundle\Entity\Reserva $idreserva
-     *
-     * @return Hospedaje
-     */
-    public function setIdreserva(\Proyecto2Bundle\Entity\Reserva $idreserva = null)
-    {
-        $this->idreserva = $idreserva;
-
-        return $this;
-    }
-
-    /**
-     * Get idreserva
-     *
-     * @return \Proyecto2Bundle\Entity\Reserva
-     */
-    public function getIdreserva()
-    {
-        return $this->idreserva;
-    }
-    /**
-     * @var float
-     */
-    private $total;
-
-
-    /**
-     * Set total
-     *
-     * @param float $total
-     *
-     * @return Hospedaje
-     */
-    public function setTotal($total)
-    {
-        $this->total = $total;
-
-        return $this;
-    }
-
-    /**
-     * Get total
-     *
-     * @return float
-     */
-    public function getTotal()
-    {
-        return $this->total;
-    }
-    /**
-     * @var \Proyecto2Bundle\Entity\Cliente
-     */
-    private $idcliente;
-
 
     /**
      * Set idcliente

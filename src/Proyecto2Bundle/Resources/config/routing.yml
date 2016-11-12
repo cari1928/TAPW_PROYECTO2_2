@@ -22,13 +22,13 @@ proyecto2_lista_vuelos_data:
     path:     /lista_vuelos_data
     defaults: { _controller: Proyecto2Bundle:Vuelos:lista_vuelos_data }
     
-proyecto2_registrar:
-    path:     /registrar
-    defaults: { _controller: Proyecto2Bundle:Vuelos:registrar }       
+proyecto2_registrar_cliente:
+    path:     /registrar_cliente
+    defaults: { _controller: Proyecto2Bundle:Vuelos:registrar_cliente }       
 
-proyecto2_reservar:
-    path:     /reservar
-    defaults: { _controller: Proyecto2Bundle:Vuelos:reservar }   
+proyecto2_cupon:
+    path:     /cupon
+    defaults: { _controller: Proyecto2Bundle:Vuelos:cupon }   
     
 proyecto2_lista_hoteles:
     path:     /lista_hoteles
@@ -48,4 +48,16 @@ proyecto2_lista_clientes:
     
 proyecto2_lista_clientes_data:
     path:     /lista_clientes_data
-    defaults: { _controller: Proyecto2Bundle:Vuelos:lista_clientes_data }     
+    defaults: { _controller: Proyecto2Bundle:Vuelos:lista_clientes_data }  
+    
+proyecto2_reservar_vuelo:
+    path:     /reservar_vuelo
+    defaults: { _controller: Proyecto2Bundle:Vuelos:reservar_vuelo }      
+    
+proyecto2_lista_reservados:
+    path:     /lista_reservados
+    defaults: { _controller: Proyecto2Bundle:Vuelos:lista_reservados }    
+    
+proyecto2_lista_reservados_data:
+    path:     /lista_reservados_data
+    defaults: { _controller: Proyecto2Bundle:Vuelos:lista_reservados_data } 

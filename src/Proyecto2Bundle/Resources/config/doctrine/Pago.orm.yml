@@ -2,7 +2,7 @@ Proyecto2Bundle\Entity\Pago:
     type: entity
     table: pago
     indexes:
-        IDX_F4DF5F3E2B18C94B:
+        idx_f4df5f3e2b18c94b:
             columns:
                 - idcliente
     id:

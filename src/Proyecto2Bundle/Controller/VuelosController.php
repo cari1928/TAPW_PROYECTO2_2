@@ -69,7 +69,7 @@ class VuelosController extends Controller
       $array = array();
       foreach ($data as $p) {
         // dump($p->getIdorigen()->getNombre());
-        // dump($p);
+        dump($p);
         // die();
          $em = $this->getDoctrine()->getManager();
         
@@ -120,6 +120,25 @@ class VuelosController extends Controller
             'direccionFacturacion'=>$p->getDireccionFacturacion(), 
             'modoPago'=>$p->getModoPago(),      'nacimiento'=>$fecha->format('Y-m-d')
             );
+        
+        } else if($type == 'Vuelo') {
+          $ens = $em->getRepository('Proyecto2Bundle:Disponibles')->findBy(array(
+              'iddisponibles'=>$p->getIddisponibles()));
+          foreach ($ens as $city) { 
+            $origen = $city->getIdorigen()->getNombre()." - ".$city->getIddestino()->getNombre(); 
+          }
+          
+          $ens = $em->getRepository('Proyecto2Bundle:Cliente')->findBy(array(
+              'idcliente'=>$p->getIdcliente()));
+          foreach ($ens as $city) { 
+            $cliente = $city->getNombres()." - ".$city->getApellidos(); 
+          }
+          
+          $temp = array(
+            'idvuelo'=>$p->getIdvuelo(),    'idcliente'=>$cliente,
+            'iddisponibles'=>$origen,       'cupon'=>$p->getCupon(),
+            'total'=>$p->getTotal()
+            );
         }
 
         array_push($array, $temp);
@@ -157,7 +176,7 @@ class VuelosController extends Controller
         return $this->render('Proyecto2Bundle:Vuelos:lista_vuelos.html.twig');      
     }
     
-    public function registrarAction(Request $request) {
+    public function registrar_clienteAction(Request $request) {
       $cliente = new Cliente();
       $form = $this->createForm(ClienteType::class, $cliente);
     
@@ -166,59 +185,92 @@ class VuelosController extends Controller
         $em = $this->getDoctrine()->getEntityManager(); 
         $em->persist($cliente); 
         $em->flush(); 
-        return $this->redirect($this->generateUrl('proyecto2_reservar')); 
+        return $this->redirect($this->generateUrl('proyecto2_cupon')); 
       }
-      return $this->render('Proyecto2Bundle:Vuelos:registrar.html.twig', 
+      return $this->render('Proyecto2Bundle:Vuelos:registrar_cliente.html.twig', 
                             array('formulario'=>$form->createView()));
     }
     
-    public function reservarAction(Request $request) {
-      // $asiento = new Asiento();
-      // $form = $this->createForm(AsientoType::class, $asiento);
+    public function cuponAction(Request $request) {
+        $vuelo = new Vuelo();
+        $form = $this->createForm(VueloType::class, $vuelo);
       
-      // $form->handleRequest($request); 
-      // if($form->isValid()){
-        //Lectura de datos desde el archivo
+        $form->handleRequest($request); 
+        if($form->isValid()){
+          $em = $this->getDoctrine()->getEntityManager(); 
+          $em->persist($vuelo); 
+          $em->flush(); 
+          return $this->redirect($this->generateUrl('proyecto2_reservar_vuelo')); 
+        }
         
-        $file = fopen("datos.txt", "r");
+        return $this->render('Proyecto2Bundle:Vuelos:cupon.html.twig', 
+                            array('formulario'=>$form->createView()));
+    }
+    
+    public function reservar_vueloAction() {
+      //Se obtienen datos del cliente
+      $em = $this->getDoctrine()->getManager();
+      $clientes = $em->getRepository('Proyecto2Bundle:Cliente')
+          ->findAllClientsOrderedByName();
+      $clientes = $clientes[0];
+      // dump($clientes);
+
+      // Se obtienen los vuelos disponibles
+      $datos = $this->fileData("datos.txt"); //se obtienen los datos del archivo datos.txt
+      $disponibles = $this->getDoctrine()
+          ->getRepository('Proyecto2Bundle:Disponibles')
+          ->find(1);   
+      // dump($disponibles);
+      // die();
+      $tarifa = $disponibles->getIdtarifa();
+      $tarifa = $tarifa->getPrecio(); 
+        
+      //Se obtiene el cupon
+      $cupon = $em->getRepository('Proyecto2Bundle:Vuelo')
+          ->findAllOrderedById();
+      // dump($cupon);
+      
+      $em = $this->getDoctrine()->getEntityManager();
+      $em->remove($cupon[0]);
+      $flush=$em->flush();
+      
+      $cupon = $cupon[0]->getCupon();
+      
+      $total = $tarifa;
+      if($cupon != 0) {
+        $cupon/= 100;
+        // echo $tarifa."<br>";
+        // echo $cupon;
+        $total = $tarifa * $cupon;
+      }
+
+      // dump($clientes);
+      // dump($disponibles);
+      // dump($cupon);
+      // die();
+      
+      $vuelo = new Vuelo();
+      $vuelo->setCupon($cupon);
+      $vuelo->setTotal($total);
+      $vuelo->setIddisponibles($disponibles);
+      $vuelo->setIdcliente($clientes);
+      
+      $em = $this->getDoctrine()->getEntityManager(); 
+      $em->persist($vuelo); 
+      $em->flush();
+      
+      return $this->redirect($this->generateUrl('proyecto2_lista_reservados')); 
+    }
+    
+    public function fileData($filename) {
+      $file = fopen($filename, "r");
         $element = $this->multiexplode(array("=>",";"), fgets($file));
-        
-        // dump($element);
-        // die();
-        
         for ($i=0; $i < count($element); $i+=2) {
           $temp = array($element[$i]=>$element[$i+1]);
           $datos[] = $temp;
         }
         fclose($file);
-        
-        // dump($datos);
-        // die();
-        
-        $cliente = $this->getDoctrine()
-          ->getRepository('Proyecto2Bundle:Cliente')
-          ->find(11);
-          
-        $disponibles = $this->getDoctrine()
-          ->getRepository('Proyecto2Bundle:Disponibles')
-          ->find($datos[0]['iddisponibles']);          
-        
-        $vuelo = new Vuelo();
-        $vuelo->setIdvuelo(2);
-        $vuelo->setIdcliente($cliente);
-        $vuelo->setIddisponibles($disponibles);
-        $vuelo->setMonto(100);
-        $vuelo->setCupon(50);
-        $vuelo->setTotal(50);
-        
-        $em = $this->getDoctrine()->getEntityManager(); 
-        $em->persist($vuelo); 
-        $em->flush(); //!!!!NO SALE DE AQUÍ, ALGO PASA
-        return $this->redirect($this->generateUrl('proyecto2_homepage')); 
-      // }
-      
-      // return $this->render('Proyecto2Bundle:Vuelos:reservar.html.twig', 
-      //                       array('formulario'=>$form->createView()));
+        return $datos;
     }
     
     public function lista_hotelesAction() {
@@ -231,7 +283,6 @@ class VuelosController extends Controller
   
       $arrays = $this->createArray($ens, 'Hotel');
       dump($arrays);
-      // die();
       $data = array('data'=>$arrays);
   
       $json_string = json_encode($data);
@@ -255,8 +306,6 @@ class VuelosController extends Controller
       $ens = $em->getRepository('Proyecto2Bundle:Cliente')->findAll();
   
       $arrays = $this->createArray($ens, 'Cliente');
-      // dump($arrays);
-      // die();
       $data = array('data'=>$arrays);
   
       $json_string = json_encode($data);
@@ -266,6 +315,23 @@ class VuelosController extends Controller
     
     public function lista_clientesAction() {
       return $this->render('Proyecto2Bundle:Vuelos:lista_clientes.html.twig');      
+    }
+    
+    public function lista_reservados_dataAction(){
+      $em = $this->getDoctrine()->getManager();
+      $ens = $em->getRepository('Proyecto2Bundle:Vuelo')->findAll();
+  
+      $arrays = $this->createArray($ens, 'Vuelo');
+      // die();
+      $data = array('data'=>$arrays);
+  
+      $json_string = json_encode($data);
+  
+      return new Response ($json_string);
+    }
+    
+    public function lista_reservadosAction(){
+      return $this->render('Proyecto2Bundle:Vuelos:lista_reservados.html.twig');      
     }
     
 }
